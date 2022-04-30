@@ -55,13 +55,14 @@ const { jadibot, stopjadibot, listjadibot } = require('./lib/jadibot')
 
 banChats = true
 offline = false
-autorespon = true
+publik = true
 targetpc = '6289515233398'
 owner = '6289515233398'
-fake = 'LivyNbllaHost'
+fake = 'pilihlah seseorang bukan karena dia memiliki segalanya,tapi dia menjadikanmu segalanya. '
 numbernye = '0'
 waktu = '-'
 alasan = '-'
+hexa.chatRead(from, "read")
 //=================================================//
 module.exports = hexa = async (hexa, mek) => {
 	try {
@@ -107,12 +108,12 @@ module.exports = hexa = async (hexa, mek) => {
 
         //MESS
 		mess = {
-			wait: '_[❗] Mohon Tunggu Sebentar..._',
-			success: '_✅ Success!_',
+			wait: '_⏳ Please Wait a little Longer..._',
+			success: '*✅ Successfully Complete!*',
 			wrongFormat: '*❌ Format Salah Silahkan Coba Lagi*',
 			error: {
 				stick: '*❌ Please Chose Sticker Only*',
-				Iv: '*❌ Link Tidak Vaild Silahkan Coba Lagi*'
+				Iv: '*❌ Kesalahaan Coba Lagi*'
 			},
 			only: {
 				group: '*[❗] Fitur Ini Harus Di Grup*',
@@ -162,7 +163,7 @@ module.exports = hexa = async (hexa, mek) => {
             })
         }
         const fakethumb = (teks, yes) => {
-            hexa.sendMessage(from, teks, image, {thumbnail:fs.readFileSync('./stik/ppfake.jpeg'),quoted:mek,caption:yes})
+            hexa.sendMessage(from, teks, image, {thumbnail:fs.readFileSync('./stik/fake.jpeg'),quoted:mek,caption:yes})
         }
         const fakegroup = (teks) => {
             hexa.sendMessage(from, teks, text, {
@@ -239,6 +240,8 @@ module.exports = hexa = async (hexa, mek) => {
                     fs.unlinkSync(filename)
                 });
             }   
+//
+//========================================================================================================================//
 		colors = ['red', 'white', 'black', 'blue', 'yellow', 'green']
 		const isMedia = (type === 'imageMessage' || type === 'videoMessage')
 		const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
@@ -298,15 +301,15 @@ module.exports = hexa = async (hexa, mek) => {
 }	
         if (!mek.key.fromMe && banChats === true) return
 switch (command) {
-    case 'jd':
+    case 'awksituu':
     if(mek.key.fromMe) return fakestatus('Tidak bisa jadibot di dalam bot')
     jadibot(reply,hexa,from)
     break
-    case 'stopjadibot':
+    case 'lopoyodo':
     if(mek.key.fromMe)return fakestatus('tidak bisa stopjadibot kecuali owner')
     stopjadibot(reply)
     break
-    case 'listbot':
+    case 'iplol':
     let tekss = '「 *LIST JADIBOT* 」\n'
     for(let i of listjadibot) {
     tekss += `*Nomor* : ${i.jid.split('@')[0]}
@@ -316,206 +319,102 @@ switch (command) {
     }
     reply(tekss)
     break
-    case 'menu':
-    case 'help':
+    case 'listmenu':
   
-var menu = `
-*LIST MENU  BOT LIVYNBLDEV*
+var menu = `*Hai Sayonara,${pushname}👋
+*List Menu Bot Viracanz*
+*1.termintedefault*
+*2.addpackage*
+*3.listdomain*
+*4.domain*
+*5.cekdefault*
+*6.ceksmtp*
+*7.cekserver*
+*8.crateaccount*
+*9.ytmp3*
 
-*1${prefix}ping*
-*2${prefix}trminatedefault*
-*3${prefix}listdomain*
-*4${prefix}addpkg*
-*5${prefix}domain* 
-*6${prefix}cekdefault* 
-*7${prefix}statuserver* 
-*8${prefix}ceksmtp* 
-
-*Di Pakai Kak Commaad Nya Ygy><*
+*Notes: Jika Ingin Sewa/Beli Chat Onwer Bot*
 `
-      	fakestatus(menu)
+        	fakestatus(menu)
         	break
     case "domain":
-        function subDomain1(host, ip) {
-          return new Promise((resolve) => {
-            let zone1 = "8651441339f0684fa4165961eea16261";
-            let apiToken1 = "2p6mq_ZgWqzH5ueSnQKROLznXkftzkY891skY4gp";
-            let tld1 = "claimcratenew.my.id";
-            axios
-              .post(
-                `https://api.cloudflare.com/client/v4/zones/${zone1}/dns_records`,
-                { type: "A", name: host.replace(/[^a-z0-9.-]/gi, "") + "." + tld1, content: ip.replace(/[^0-9.]/gi, ""), ttl: 3600, priority: 10, proxied: false },
-                {
-                  headers: {
-                    Authorization: "Bearer " + apiToken1,
-                    "Content-Type": "application/json",
-                  },
-                }
-              )
-              .then((e) => {
-                let res = e.data;
-                if (res.success) resolve({ success: true, zone: res.result?.zone_name, name: res.result?.name, ip: res.result?.content });
-              })
-              .catch((e) => {
-                let err1 = e.response?.data?.errors?.[0]?.message || e.response?.data?.errors || e.response?.data || e.response || e;
-                let err1Str = String(err1);
-                resolve({ success: false, error: err1Str });
-              });
-          });
-        }
-
-        let raw1 = args?.join(" ")?.trim();
-        if (!raw1) return fakestatus("*Masukaan Hostname & IP Server Ny Mastah*");
-        let host1 = raw1
-          .split("|")[0]
-          .trim()
-          .replace(/[^a-z0-9.-]/gi, "");
-        if (!host1) return fakestatus("Host Tidak valid, pastikan host hanya mengandung huruf, angka, - (strip), dan . (titik)");
-        let ip1 = raw1.split("|")[1]?.replace(/[^0-9.]/gi, "");
-        if (!ip1 || ip1.split(".").length < 4) return fakestatus(ip1 ? "*Masukkan Ip Yang Bener Mastah Koncol*" : "*Mana IP Nya Mastah?*");
-
-        subDomain1(host1, ip1).then((e) => {
-          if (e['success']) fakestatus(`_✅ Success ${e['name']} Terdaftar Di Server_`);
-          else fakestatus(`Gagal Silahkan Coba Lagi\nMessage: ${e['error']}`)
-        });
-    break;
-        case "addpkg":
-        let sUser1 = "root";
-        let sPass1 = "@kingrival";
-        let serverName1 = "login.sundanesewestjava.biz:2087";
-
-        let uname1 = args?.join(" ")?.trim()?.split("|")?.[0]?.trim();
-        let pack1 = args?.join(" ")?.trim()?.split("|")?.[1]?.trim();
-
-        if (!uname1 || !pack1) return fakestatus(`Mana ${!uname1 && !pack1 ? "Username & Package" : !uname1 ? "Username" : !pack1 ? "Package" : ""} Nya\n\nContoh: .pkg username | package`);
-
-        axios
-          .get(`https://${serverName1}/json-api/listpkgs?api.version=1`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } })
-          .then((e) => {
-            let pkgs = e.data?.data?.pkg
-              ?.map((x) => {
-                return x.name;
-              })
-              .filter((x) => {
-                return !x.includes("_") && !x.includes("default");
-              });
-              if(!pkgs.includes(pack1)) return fakestatus(`Package ${pack1} Tidak Ditemukan`)
-            axios
-              .get(`https://${serverName1}/json-api/changepackage?api.version=1&user=${encodeURIComponent(uname1)}&pkg=${encodeURIComponent(pack1)}`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } })
-              .then((e) => {
-                console.log("Upgrade user package: " + JSON.stringify(e.data?.metadata?.reason || {}, null, 2));
-                if (e.data?.metadata?.reason == "OK") {
-                  let allowedPkg = pkgs.filter((x) => {
-                    return pack1.toLowerCase().includes("whm") ? x.toLowerCase().includes("cpanel") : pack1.toLowerCase().includes("admin") ? x.toLowerCase().includes("whm") || x.toLowerCase().includes("cpanel") : pack1.toLowerCase().includes("ceo") ? !x.toLowerCase().includes("ceo") && !x.toLowerCase().includes("founder") : pack1.toLowerCase().includes("founder") ? true : false;
-                  });
-                  if (allowedPkg.length > 0) {
-                    let param = "account_limit=15&bandwidth_limit=15000&diskspace_limit=15000&enable_account_limit=0&enable_overselling=1&enable_overselling_bandwidth=1&enable_overselling_diskspace=1&enable_package_limit_numbers=0&enable_package_limits=1&enable_resource_limits=0";
-                    axios.get(`https://${serverName1}/json-api/setresellerlimits?api.version=1&user=${uname1}&${param}`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } }).then(async (e) => {
-                      if (e?.data?.metadata?.reason == "OK") {
-                        let pkgDone = [];
-                        for await (let pkg of allowedPkg) {
-                          console.log(`Add package ${pkg} to ${uname1}`);
-                          await axios
-                            .get(`https://${serverName1}/json-api/setresellerpackagelimit?api.version=1&user=${uname1}&allowed=1&package=${encodeURIComponent(pkg)}`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } })
-                            .then((e) => {
-                              if (e?.data?.metadata?.reason == "OK") {
-                                console.log(`add package ${pkg} to ${uname1} success`);
-                                pkgDone.push(pkg);
-                              } else {
-                                console.log({ error: `add package: ${pkg} to user: ${uname1}`, msg: JSON.stringify(e.data?.metadata?.reason || e.data?.metadata || e.data, null, 2) });
-                              }
-                            })
-                            .catch((e) => {
-                              console.log(JSON.stringify(e.response?.data || e.reason || e, null, 2));
-                            });
-                        }
-                        if (pkgDone.length > 0) fakestatus(`_✅ Success Menambahkan Package ${uname1} Silahkan Di Login Kak Akunnya><_`);
-                      } else console.log(`upgrade user ${uname1} to ${pack1} failed\nError: ${JSON.stringify(e.data || e, null, 2)}`);
-                    });
-                  }
-                } else {
-                  console.log({ error: `Upgrading user plan from defaut to ${pack1}`, message: JSON.stringify(e.data?.metadata || e.data, null, 2) });
-                }
-              })
-              .catch((e) => {
-                console.log({ error: `Upgrading user plan from defaut to ${pack1}`, message: JSON.stringify(e.response?.data || e, null, 2) });
-              });
-          })
-          .catch((e) => {
-            console.log(`upgrade user package to ${pack1} failed\nreason: ${JSON.stringify(e.response?.data || e.response || e, null, 2)}`);
-          });
-          break
-          case "trminatedefault":
-        let uname = args[0]
-        if(!uname) fakestatus("Usernamenya Apa Kak?><")
-        meki = fs.readFileSync('./stik/vn.mp3'),
-        axios.get(`https://login.sundanesewestjava.biz:2087/json-api/removeacct?api.version=1&username=${uname}`, { headers: { Authorization: "Basic " + Buffer.from("root:@kingrival").toString("base64") } })
-        .then(e=>{if([1, "1"].includes(e.data?.metadata?.result)) fakestatus(`✅ Success ${uname} Telah di Delete Di Server Ini`); else {fakestatus("Mohon Maaf Gagal Silahkan Coba Lagi"); console.log(e.data)}})
-        .catch(e=>{fakestatus("Kesalahan Server Coba Lagi"); console.log(JSON.stringify(e, null, 2))})
-         hexa.sendMessage(from,meki,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
-          break
+    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    break
+    case "addpackage":
+    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    break
+    case "termintedefault":
+    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    break
+    case "cekdefault":
+    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    break
+    case "cekserver":
+    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    break
+    case "ceksmtp":
+    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    break
+    case "listdomain":
+    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    break
+    case "crateaccount":
+    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    break
+    case 'ytmp3':
+			if (args.length === 0) return fakestatus(`Kirim Perintah *${prefix}ytmp3 <linkyt>*`)
+			let isLinks = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
+			if (!isLinks) return fakestatus(mess.error.Iv)
+				try {
+				fakestatus(mess.wait)
+				yta(args[0])
+				.then((res) => {
+				const { dl_link, thumb, title, filesizeF, filesize } = res
+				axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
+				.then((a) => {
+			    if (Number(filesize) >= 30000) return sendMediaURL(from, thumb, `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Untuk durasi lebih dari batas disajikan dalam mektuk link_`)
+				const captions = `*YTMP3*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+				sendMediaURL(from, thumb, captions)
+				sendMediaURL(from, dl_link).catch(() => fakestatus(mess.error.api))
+				})
+				})
+				} catch (err) {
+				fakestatus(mess.error.api)
+				}
+				break
+				case 'idff':
+                    if (args.length == 0) return fakestatus(`Example: .idff 1625352505`)
+                    query = args.join(" ")
+             reply(lang.wait())   
+             get_result = await fetchJson(`https://delnichi.xyz/api/IdFF/?id=${query}&apikey=NbillaLoli`)
+                    get_result = get_result.result
+                    ini_txt = ""
+                    for (var x of get_result) {
+                    ini_txt += `Nickname : ${x.username}\n`
+                    ini_txt += `Userid : ${x.userid}\n`
+                    }
+                    fakestatus(ini_txt)
+                    break
+                    case 'xnxxsearch':
+                    if (args.length == 0) return fakestatus(`Example: .xnnxsearch Japanese`)
+                    query = args.join(" ")
+                    get_result = await fetchJson(`https://deviraanj.herokuapp.com/api/downloader/xnxx?query=${query}&apikey=apivira`)
+                    get_result = get_result.result
+                    ini_txt = ""
+                    for (var x of get_result) {
+                        ini_txt += `Duration : ${x.info}\n`
+                        ini_txt += `Link : ${x.link}\n`
+                        ini_txt += `Thumbnail : ${x.thumbnail}\n\n`
+                    }
+                    fakestatus(ini_txt)
+                    break
     case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
           	if (banChats === false) return
           	// var taged = ben.message.extendedTextMessage.contextInfo.mentionedJid[0]
           	banChats = false
-          	fakestatus(`「 *✅ Suuccess Mode Public* 」`)
+          	fakestatus(`*🐹 Done Sucesss*`)
           	break
-    case 'f':
-    return fakestatus('*✅ Successs User Default Di Temukan! Total 6 Orang*')
-    break
-      case 'df':
-const angkany = args.join(' ').split('|')[0]
-const domainny = args.join(' ').split('|')[1]
-const zoneid = BOT.Marvel.domain.cloudflare.zoneid["8651441339f0684fa4165961eea16261"+angkany]
-const bearer = BOT.Marvel.domain.cloudflare.bearer["2p6mq_ZgWqzH5ueSnQKROLznXkftzkY891skY4gp"+angkany]
-const listdomain = BOT.Marvel.domain.listdomain.bearer["claimcratenew.my.id"+angkany]
-
-if (angkany > BOT.Marvel.domain.total) return fakegroup(`Blom ada`) //Jumlah Domain
-axios.post(`https://api.cloudflare.com/client/v4/zones/${zoneid}/dns_records`,
-{ type: "A", name: `${domainny}.${listdomain}`, content: `${ip}`, proxied: true},
-{
-  headers: {
-    Authorization: `Bearer ${bearer}`,
-   "Content-Type": "application/json"
-  }
-}).then((e) => {
-  const res = e.data
-  if(res.success){
-    fakegroup(`Sukses beb ><
-
-Domain : ${res.result.name}
-
-Status 200`)
-  }
-}).catch((e) => {
-  fakegroup(`Gagal
-
-Domain ${domainny}.${listdomain} telah dibanned
-
-Status ${e.response.data}`)
-})
-break
-case 'dy':
-const usernyy = args.join(' ').split('|')[0]
-const passnyy = args.join(' ').split('|')[1]
-const pkgnyy = args.join(' ').split('|')[2]
-axios.post(`https://brety.net/create/?root&pass=@kingrival&ip=104.208.114.251&usernya=${usernyy}&passd=${passnyy}&pkg=${encodeURIComponent(pkgnyy)}`,
-{
-  token: "OS72V"
-}).then((e) => {
-  fakegroup(`${e}`)
-}).catch((e) => {
-  fakegroup(`Gagal`)
-})
-            break
-    case 'runtime':
-    case 'test':
-            run = process.uptime() 
-            teks = `${kyun(run)}`
-            fakegroup(teks)
-            break  
-	case 'speed':
 	case 'ping':
 			const timestamp = speed();
 			const latensi = speed() - timestamp
@@ -539,7 +438,7 @@ reply(e)
 	}
 if (isGroup && budy != undefined) {
 	} else {
-	console.log(color('[TEXT]', 'red'), 'RevlyNbila', color(sender.split('@')[0]))
+	console.log(color('[TEXT]', 'red'), 'Viraa-BOT', color(sender.split('@')[0]))
 	}		
 	} catch (e) {
     e = String(e)
