@@ -62,7 +62,6 @@ fake = 'pilihlah seseorang bukan karena dia memiliki segalanya,tapi dia menjadik
 numbernye = '0'
 waktu = '-'
 alasan = '-'
-hexa.chatRead(from, "read")
 //=================================================//
 module.exports = hexa = async (hexa, mek) => {
 	try {
