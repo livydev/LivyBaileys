@@ -58,7 +58,7 @@ offline = false
 publik = true
 targetpc = '6289515233398'
 owner = '6289515233398'
-fake = 'pilihlah seseorang bukan karena dia memiliki segalanya,tapi dia menjadikanmu segalanya. '
+fake = 'Viracanz Xiixi>< '
 numbernye = '0'
 waktu = '-'
 alasan = '-'
@@ -320,8 +320,9 @@ switch (command) {
     break
     case 'listmenu':
   
-var menu = `*Hai Sayonara,${pushname}👋
-*List Menu Bot Viracanz*
+var menu = `_Hai Sayonara,${pushname}👋_
+*List Menu Bot Hosting Viracanz🐹*
+
 *1.termintedefault*
 *2.addpackage*
 *3.listdomain*
@@ -332,7 +333,7 @@ var menu = `*Hai Sayonara,${pushname}👋
 *8.crateaccount*
 *9.ytmp3*
 
-*Notes: Jika Ingin Sewa/Beli Chat Onwer Bot*
+_Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
 `
         	fakestatus(menu)
         	break
@@ -372,7 +373,7 @@ var menu = `*Hai Sayonara,${pushname}👋
 				axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
 				.then((a) => {
 			    if (Number(filesize) >= 30000) return sendMediaURL(from, thumb, `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Untuk durasi lebih dari batas disajikan dalam mektuk link_`)
-				const captions = `*YTMP3*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+				const captions = `*YTMP3*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n\n*Please Wait..Media Sedang Di Kirim!* `
 				sendMediaURL(from, thumb, captions)
 				sendMediaURL(from, dl_link).catch(() => fakestatus(mess.error.api))
 				})
@@ -382,15 +383,15 @@ var menu = `*Hai Sayonara,${pushname}👋
 				}
 				break
 				case 'idff':
-                    if (args.length == 0) return fakestatus(`Example: .idff 1625352505`)
+                    if (args.length == 0) return fakestatus(`Example: .idff 48599195`)
                     query = args.join(" ")
-             reply(lang.wait())   
-             get_result = await fetchJson(`https://delnichi.xyz/api/IdFF/?id=${query}&apikey=NbillaLoli`)
+             fakestatus(lang.wait())   
+             get_result = await fetchJson(`https://delvanesia.xyz/vi.php?id=${query}&apikey=Viraanjg`)
                     get_result = get_result.result
                     ini_txt = ""
                     for (var x of get_result) {
-                    ini_txt += `Nickname : ${x.username}\n`
-                    ini_txt += `Userid : ${x.userid}\n`
+                    ini_txt += `Nickname : ${x.nickname}\n`
+                    ini_txt += `Status : ${x.status}\n`
                     }
                     fakestatus(ini_txt)
                     break
@@ -403,7 +404,6 @@ var menu = `*Hai Sayonara,${pushname}👋
                     for (var x of get_result) {
                         ini_txt += `Duration : ${x.info}\n`
                         ini_txt += `Link : ${x.link}\n`
-                        ini_txt += `Thumbnail : ${x.thumbnail}\n\n`
                     }
                     fakestatus(ini_txt)
                     break
