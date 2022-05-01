@@ -331,7 +331,6 @@ var menu = `_Hai Sayonara,${pushname}👋_
 *6.ceksmtp*
 *7.cekserver*
 *8.crateaccount*
-*9.ytmp3*
 
 _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
 `
@@ -361,6 +360,36 @@ _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
     case "crateaccount":
     return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
     break
+    case 'hentai':
+              getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
+              hexa.sendMessage(from, gambar, image, { quoted: mek })
+       }) 
+           break
+           case 'ass':
+              getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/ass?apikey=apiviradev`).then((gambar) => {
+              hexa.sendMessage(from, gambar, image, { quoted: mek })
+       }) 
+       case 'bc':
+                    if (sender.split("@")[0] != owner) return fakestatus("Onwer Only!")
+                    list_chat = await hexa.chats.all()
+                    ini_text = args.join(" ")
+                    for (let chat of list_chat) {
+                        sendMess(chat.jid, ini_text)
+                    }
+                    break
+               case 'idml':
+                    if (args.length == 0) return fakestatus(`Example: ${prefix + command} 84830127/2169`)
+                    ml_id = args[0]
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/mobilelegend/${ml_id}?apikey=3f56f3c5799ae89c6d0f9c96`)
+                    fakestatus(get_result.result)
+                    break
+           case 'ssweb':
+if (args.length < 1) return fakestatus('*Masukaan Link Website!*')
+teks = q
+anu = await fetchJson(`https://shot.screenshotapi.net/screenshot?&url=${teks}`)
+buff = await getBuffer(anu.screenshot)
+hexa.sendMessage(from, buff, image, {quoted: froxx, caption : teks})
+break
     case 'ytmp3':
 			if (args.length === 0) return fakestatus(`Kirim Perintah *${prefix}ytmp3 <linkyt>*`)
 			let isLinks = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
@@ -382,19 +411,6 @@ _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
 				fakestatus(mess.error.api)
 				}
 				break
-				case 'idff':
-                    if (args.length == 0) return fakestatus(`Example: .idff 48599195`)
-                    query = args.join(" ")
-             fakestatus(lang.wait())   
-             get_result = await fetchJson(`https://delvanesia.xyz/vi.php?id=${query}&apikey=Viraanjg`)
-                    get_result = get_result.result
-                    ini_txt = ""
-                    for (var x of get_result) {
-                    ini_txt += `Nickname : ${x.nickname}\n`
-                    ini_txt += `Status : ${x.status}\n`
-                    }
-                    fakestatus(ini_txt)
-                    break
                     case 'xnxxsearch':
                     if (args.length == 0) return fakestatus(`Example: .xnnxsearch Japanese`)
                     query = args.join(" ")
