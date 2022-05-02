@@ -332,6 +332,7 @@ var menu = `_Hai Sayonara,${pushname}👋_
 *7.cekserver*
 *8.idff*
 *9.crateaccount*
+
 _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
 `
         	fakestatus(menu)
@@ -359,13 +360,11 @@ _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
     break
     case 'hentai':
               getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
-              return fakestatus("_Wait..._")
               hexa.sendMessage(from, gambar, image, { quoted: mek })
        }) 
            break
            case 'ass':
               getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/ass?apikey=apiviradev`).then((gambar) => {
-              return fakestatus("_Wait..._")
               hexa.sendMessage(from, gambar, image, { quoted: mek })
        })
        break
@@ -373,14 +372,14 @@ _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
 const listdomainku = 
 `*List Domain Virahosting Bot*
 
-*1.ffeventkulgar.com*
-*2.chipsjagoid.com*
-*3.eventmlid22.com*
-*4.hdichipsnew22.xyz*
-*5.eventnew88.my.id*
-*6.pubgnewevent22.com*
-*7.cratenew22.com*
-*8.terbaru22.net*
+*1.ffeventkulgar.com ✅*
+*2.chipsjagoid.com ✅*
+*3.eventmlid22.com ✅*
+*4.hdichipsnew22.xyz ✅*
+*5.eventnew88.my.id ❌*
+*6.pubgnewevent22.com ✅*
+*7.cratenew22.com ❌*
+*8.terbaru22.net ❌*
 `
 fakestatus(listdomainku)
 break
@@ -389,29 +388,17 @@ break
                     ff_id = args[0]
                     get_result = await fetchJson(`https://delvanesia.xyz/ff/?id=${ff_id}&apikey=NbillaLoli`)
                     get_result = get_result.result
-                    ini_txt = ""
-                    for (var x of get_result) {
-                        ini_txt += `Nickname : ${x.nickname}\n`
-                        ini_txt += `Status : ${x.code}\n`
-                    }
+                    ini_txt = `Nickname : ${get_result.nickname}\n`
+                    ini_txt += `Status : ${get_result.code}\n`
                     fakestatus(ini_txt)
                     break
-                    case 'pinterest':
-                    if (args.length == 0) return fakestatus(`Example: ${prefix + command} aeshestic`)
-                    query = args.join(" ")
-                    get_result = await fetchJson(`https://viraadwifdlh.herokuapp.com/api/downloader/pinterest?q=${query}&apikey=apiviradev`)
-                    get_result = get_result.result
-                    for (var x = 0; x <= 5; x++) {
-                    var ini_buffer = await getBuffer(get_result[x])
-                    await hexa.sendMessage(from, ini_buffer, image)
-                    }
-                    break
+                    
             case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
           	if (banChats === false) return
           	// var taged = ben.message.extendedTextMessage.contextInfo.mentionedJid[0]
           	banChats = false
-          	fakestatus(`*🐹 Done Sucesss*`)
+          	fakestatus(`*Sucesss Mode Public*`)
           	break
 	     case 'ping':
 			const timestamp = speed();
