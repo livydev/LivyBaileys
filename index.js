@@ -330,8 +330,8 @@ var menu = `_Hai Sayonara,${pushname}👋_
 *5.cekdefault*
 *6.ceksmtp*
 *7.cekserver*
-*8.crateaccount*
-
+*8.idff*
+*9.crateaccount*
 _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
 `
         	fakestatus(menu)
@@ -354,82 +354,66 @@ _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
     case "ceksmtp":
     return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
     break
-    case "listdomain":
-    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
-    break
     case "crateaccount":
     return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
     break
     case 'hentai':
               getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
+              return fakestatus("_Wait..._")
               hexa.sendMessage(from, gambar, image, { quoted: mek })
        }) 
            break
            case 'ass':
               getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/ass?apikey=apiviradev`).then((gambar) => {
-              return fakestatus("_⏳Mohon Tunggu Sebentar...._")
+              return fakestatus("_Wait..._")
               hexa.sendMessage(from, gambar, image, { quoted: mek })
        })
        break
-               case 'idml':
-                    if (args.length == 0) return fakestatus(`Example: ${prefix + command} 84830127/2169`)
-                    ml_id = args[0]
-                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/mobilelegend/${ml_id}?apikey=3f56f3c5799ae89c6d0f9c96`)
-                    fakestatus(get_result.result)
-                    break
+       case 'listdomain':
+const listdomainku = 
+`*List Domain Virahosting Bot*
+
+*1.ffeventkulgar.com*
+*2.chipsjagoid.com*
+*3.eventmlid22.com*
+*4.hdichipsnew22.xyz*
+*5.eventnew88.my.id*
+*6.pubgnewevent22.com*
+*7.cratenew22.com*
+*8.terbaru22.net*
+`
+fakestatus(listdomainku)
+break
                     case 'idff':
-                    if (args.length == 0) return fakestatus(`Example: ${prefix + command} 570098876`)
+                    if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} 570098876`)
                     ff_id = args[0]
                     get_result = await fetchJson(`https://delvanesia.xyz/ff/?id=${ff_id}&apikey=NbillaLoli`)
-                    fakestatus(get_result.result)
-                    break
-                    case 'idhdi':
-                    if (args.length == 0) return fakestatus(`Example: ${prefix + command} 291756557`)
-                    hdi_id = args[0]
-                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/higghdomino/${hdi_id}?apikey=3f56f3c5799ae89c6d0f9c96`)
-                    fakestatus(get_result.result)
-                    break
-    case 'ytmp3':
-			if (args.length === 0) return fakestatus(`Kirim Perintah *${prefix}ytmp3 <linkyt>*`)
-			let isLinks = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-			if (!isLinks) return fakestatus(mess.error.Iv)
-				try {
-				fakestatus(mess.wait)
-				yta(args[0])
-				.then((res) => {
-				const { dl_link, thumb, title, filesizeF, filesize } = res
-				axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
-				.then((a) => {
-			    if (Number(filesize) >= 30000) return sendMediaURL(from, thumb, `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Untuk durasi lebih dari batas disajikan dalam mektuk link_`)
-				const captions = `*YTMP3*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n\n*Please Wait..Media Sedang Di Kirim!* `
-				sendMediaURL(from, thumb, captions)
-				sendMediaURL(from, dl_link).catch(() => fakestatus(mess.error.api))
-				})
-				})
-				} catch (err) {
-				fakestatus(mess.error.api)
-				}
-				break
-                    case 'xnxxsearch':
-                    if (args.length == 0) return fakestatus(`Example: .xnnxsearch Japanese`)
-                    query = args.join(" ")
-                    get_result = await fetchJson(`https://deviraanj.herokuapp.com/api/downloader/xnxx?query=${query}&apikey=apivira`)
                     get_result = get_result.result
                     ini_txt = ""
                     for (var x of get_result) {
-                        ini_txt += `Duration : ${x.info}\n`
-                        ini_txt += `Link : ${x.link}\n`
+                        ini_txt += `Nickname : ${x.nickname}\n`
+                        ini_txt += `Status : ${x.code}\n`
                     }
                     fakestatus(ini_txt)
                     break
-    case 'public':
+                    case 'pinterest':
+                    if (args.length == 0) return fakestatus(`Example: ${prefix + command} aeshestic`)
+                    query = args.join(" ")
+                    get_result = await fetchJson(`https://viraadwifdlh.herokuapp.com/api/downloader/pinterest?q=${query}&apikey=apiviradev`)
+                    get_result = get_result.result
+                    for (var x = 0; x <= 5; x++) {
+                    var ini_buffer = await getBuffer(get_result[x])
+                    await hexa.sendMessage(from, ini_buffer, image)
+                    }
+                    break
+            case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
           	if (banChats === false) return
           	// var taged = ben.message.extendedTextMessage.contextInfo.mentionedJid[0]
           	banChats = false
           	fakestatus(`*🐹 Done Sucesss*`)
           	break
-	case 'ping':
+	     case 'ping':
 			const timestamp = speed();
 			const latensi = speed() - timestamp
 			exec(`neofetch --stdout`, (error, stdout, stderr) => {
