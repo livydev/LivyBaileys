@@ -58,7 +58,7 @@ offline = false
 publik = true
 targetpc = '6289515233398'
 owner = '6289515233398'
-fake = 'Viracanz Xiixi>< '
+fake = 'Saya jelek dan saya bangga:)'
 numbernye = '0'
 waktu = '-'
 alasan = '-'
@@ -367,29 +367,28 @@ _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
            break
            case 'ass':
               getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/ass?apikey=apiviradev`).then((gambar) => {
+              return fakestatus("_⏳Mohon Tunggu Sebentar...._")
               hexa.sendMessage(from, gambar, image, { quoted: mek })
-       }) 
-       case 'bc':
-                    if (sender.split("@")[0] != owner) return fakestatus("Onwer Only!")
-                    list_chat = await hexa.chats.all()
-                    ini_text = args.join(" ")
-                    for (let chat of list_chat) {
-                        sendMess(chat.jid, ini_text)
-                    }
-                    break
+       })
+       break
                case 'idml':
                     if (args.length == 0) return fakestatus(`Example: ${prefix + command} 84830127/2169`)
                     ml_id = args[0]
                     get_result = await fetchJson(`https://api.lolhuman.xyz/api/mobilelegend/${ml_id}?apikey=3f56f3c5799ae89c6d0f9c96`)
                     fakestatus(get_result.result)
                     break
-           case 'ssweb':
-if (args.length < 1) return fakestatus('*Masukaan Link Website!*')
-teks = q
-anu = await fetchJson(`https://shot.screenshotapi.net/screenshot?&url=${teks}`)
-buff = await getBuffer(anu.screenshot)
-hexa.sendMessage(from, buff, image, {quoted: froxx, caption : teks})
-break
+                    case 'idff':
+                    if (args.length == 0) return fakestatus(`Example: ${prefix + command} 570098876`)
+                    ff_id = args[0]
+                    get_result = await fetchJson(`https://delvanesia.xyz/ff/?id=${ff_id}&apikey=NbillaLoli`)
+                    fakestatus(get_result.result)
+                    break
+                    case 'idhdi':
+                    if (args.length == 0) return fakestatus(`Example: ${prefix + command} 291756557`)
+                    hdi_id = args[0]
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/higghdomino/${hdi_id}?apikey=3f56f3c5799ae89c6d0f9c96`)
+                    fakestatus(get_result.result)
+                    break
     case 'ytmp3':
 			if (args.length === 0) return fakestatus(`Kirim Perintah *${prefix}ytmp3 <linkyt>*`)
 			let isLinks = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
