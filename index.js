@@ -107,7 +107,7 @@ module.exports = hexa = async (hexa, mek) => {
 
         //MESS
 		mess = {
-			wait: '_⏳ Please Wait a little Longer..._',
+			wait: '_⏳ Please Wait..._',
 			success: '*✅ Successfully Complete!*',
 			wrongFormat: '*❌ Format Salah Silahkan Coba Lagi*',
 			error: {
@@ -370,7 +370,7 @@ _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
        break
        case 'listdomain':
 const listdomainku = 
-`*List Domain Virahosting Bot*
+`*List Domain NusaServerHosting Bot*
 
 *1.ffeventkulgar.com ✅*
 *2.chipsjagoid.com ✅*
@@ -381,6 +381,9 @@ const listdomainku =
 *7.cratenew22.com ❌*
 *8.terbaru22.net ❌*
 *9.eventff23.com❌*
+*10.createnew.xyz ✅*
+*11.kulgarevent23.xyz ✅*
+*12.newchpisevent.net ❌*
 `
 fakestatus(listdomainku)
 break
@@ -393,12 +396,57 @@ break
                     ini_txt += `Status : ${get_result.code}\n`
                     fakestatus(ini_txt)
                     break
+                    case 'isgd':
+                    if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} https://delnichi.xyz`)
+                    ini_url = args[0]
+                    get_result = await fetchJson(`https://api.dapuhy.xyz/api/others/isgd?url=${ini_url}&apikey=jteYUyARKd`)
+                    fakestatus(get_result.result)
+                    break
+                    case 'ssweb':
+					if (args.length < 1) return fakestatus('Urlnya mana om?')
+					teks = body.slice(7)
+					fakestatus(mess.wait)
+					anu = await fetchJson(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`)
+					buff = await getBuffer(anu.gambar)
+					hexa.sendMessage(from, buff, image, {quoted: mek})
+					break
+					case 'clearchat':
+					if (!isOwner) return fakestatus('Kamu siapa?')
+					anu = await hexa.chats.all()
+					hexa.setMaxListeners(25)
+					for (let _ of anu) {
+						hexa.deleteChat(_.jid)
+					}
+					fakestatus('Sukses delete all chat :)')
+					break
+					case 'bc':
+					if (!isOwner) return fakestatus('Kamu siapa?')
+					if (args.length < 1) return fakestatus('Teksnya!?')
+					anu = await hexa.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await hexa.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							hexa.sendMessage(_.jid, buff, image, {caption: `[ Viracanz Broadcast ]\n\n${body.slice(4)}`})
+						}
+						fakestatus('Suksess broadcast')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `[ Viracanz Broadcast ]\n\n${body.slice(4)}`)
+						}
+						fakestatus('Suksess broadcast')
+					}
+					break
                     case 'base64':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} viracanz`)
                     txt_enc = args[0]
                     get_result = await fetchJson(`https://api.xteam.xyz/encrypt/b64enc?text=${txt_enc}&APIKEY=06ce175b1a7d7317`)
                     fakestatus(get_result.result)
                     break
+                    case 'asupaan':
+            fakestatus(mess.wait)
+           sendMediaURL(from,`https://api.dapuhy.xyz/api/asupan/asupan?apikey=jteYUyARKd`, `Jangan Comli Kak ${pushname}`)
+           break
             case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
           	if (banChats === false) return
