@@ -359,13 +359,13 @@ _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
     return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
     break
     case 'hentai':
-              getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
-              hexa.sendMessage(from, gambar, image, { quoted: mek })
-       }) 
-           break
-           case 'ass':
-              getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/ass?apikey=apiviradev`).then((gambar) => {
-              hexa.sendMessage(from, gambar, image, { quoted: mek })
+    getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
+    hexa.sendMessage(from, gambar, image, { quoted: mek })
+    }) 
+    break
+   case 'ass':
+    getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/ass?apikey=apiviradev`).then((gambar) => {
+     hexa.sendMessage(from, gambar, image, { quoted: mek })
        })
        break
        case 'listdomain':
@@ -380,6 +380,7 @@ const listdomainku =
 *6.pubgnewevent22.com ✅*
 *7.cratenew22.com ❌*
 *8.terbaru22.net ❌*
+*9.eventff23.com❌*
 `
 fakestatus(listdomainku)
 break
@@ -392,7 +393,12 @@ break
                     ini_txt += `Status : ${get_result.code}\n`
                     fakestatus(ini_txt)
                     break
-                    
+                    case 'base64':
+                    if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} viracanz`)
+                    txt_enc = args[0]
+                    get_result = await fetchJson(`https://api.xteam.xyz/encrypt/b64enc?text=${txt_enc}&APIKEY=06ce175b1a7d7317`)
+                    fakestatus(get_result.result)
+                    break
             case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
           	if (banChats === false) return
