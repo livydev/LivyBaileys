@@ -107,8 +107,8 @@ module.exports = hexa = async (hexa, mek) => {
 
         //MESS
 		mess = {
-			wait: '_⏳ Please Wait..._',
-			success: '*✅ Successfully Complete!*',
+			wait: '_Please Wait..._',
+			success: 'Success',
 			wrongFormat: '*❌ Format Salah Silahkan Coba Lagi*',
 			error: {
 				stick: '*❌ Please Chose Sticker Only*',
@@ -300,24 +300,6 @@ module.exports = hexa = async (hexa, mek) => {
 }	
         if (!mek.key.fromMe && banChats === true) return
 switch (command) {
-    case 'awksituu':
-    if(mek.key.fromMe) return fakestatus('Tidak bisa jadibot di dalam bot')
-    jadibot(reply,hexa,from)
-    break
-    case 'lopoyodo':
-    if(mek.key.fromMe)return fakestatus('tidak bisa stopjadibot kecuali owner')
-    stopjadibot(reply)
-    break
-    case 'iplol':
-    let tekss = '「 *LIST JADIBOT* 」\n'
-    for(let i of listjadibot) {
-    tekss += `*Nomor* : ${i.jid.split('@')[0]}
-*Nama* : ${i.name}
-*Device* : ${i.phone.device_manufacturer}
-*Model* : ${i.phone.device_model}\n\n`
-    }
-    reply(tekss)
-    break
     case 'listmenu':
   
 var menu = `_Hai Sayonara,${pushname}👋_
@@ -379,11 +361,6 @@ const listdomainku =
 *5.eventnew88.my.id ❌*
 *6.pubgnewevent22.com ✅*
 *7.cratenew22.com ❌*
-*8.terbaru22.net ❌*
-*9.eventff23.com❌*
-*10.createnew.xyz ✅*
-*11.kulgarevent23.xyz ✅*
-*12.newchpisevent.net ❌*
 `
 fakestatus(listdomainku)
 break
@@ -396,6 +373,40 @@ break
                     ini_txt += `Status : ${get_result.code}\n`
                     fakestatus(ini_txt)
                     break
+                    case 'clearchat':
+					anu = await hexa.chats.all()
+					hexa.setMaxListeners(10)
+					for (let _ of anu) {
+				   hexa.clearMessage(_.jid)
+					}
+					fakegroup('Suksess')
+					break
+					case 'mediafire':
+
+if (args.length < 1) return fakestatus('Link Nya Mana? ')
+if(!isUrl(args[0]) && !args[0].includes('mediafire')) return reply(mess.error.api)
+if (Number(filesize) >= 30000) return fakestatus(`*「 MEDIAFIRE DOWNLOAD 」*
+
+*➤  Nama :* ${res[0].nama}*
+*➤  Ukuran :* ${res[0].size}*
+*➤  Link :* ${res[0].link}*
+
+_Maaf size melebihi batas maksimal, Silahkan klik link diatas_`)
+
+teks = args.join(' ')
+res = await mediafireDl(teks)
+result = `*「 MEDIAFIRE DOWNLOAD 」*
+
+*Data Berhasil Didapatkan!*
+*➤  Nama : ${res[0].nama}*
+*➤  Ukuran : ${res[0].size}*
+*➤  Link : ${res[0].link}*
+
+_File sedang dikirim, Silahkan tunggu beberapa menit_`
+fakestatus(result)
+res = await mediafireDl(teks)
+sendFileFromUrl(res[0].link, document, {mimetype: res[0].mime, filename: res[0].nama, quoted: mek})
+break
                     case 'isgd':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} https://delnichi.xyz`)
                     ini_url = args[0]
@@ -403,39 +414,12 @@ break
                     fakestatus(get_result.result)
                     break
                     case 'ssweb':
-					if (args.length < 1) return fakestatus('Urlnya mana om?')
+					if (args.length < 1) return fakestatus('Url Nya mana Mastah?')
 					teks = body.slice(7)
 					fakestatus(mess.wait)
 					anu = await fetchJson(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`)
 					buff = await getBuffer(anu.gambar)
 					hexa.sendMessage(from, buff, image, {quoted: mek})
-					break
-					case 'clearchat':
-					if (!isOwner) return fakestatus('Kamu siapa?')
-					anu = await hexa.chats.all()
-					hexa.setMaxListeners(25)
-					for (let _ of anu) {
-						hexa.deleteChat(_.jid)
-					}
-					fakestatus('Sukses delete all chat :)')
-					break
-					case 'bc':
-					if (!isOwner) return fakestatus('Kamu siapa?')
-					if (args.length < 1) return fakestatus('Teksnya!?')
-					anu = await hexa.chats.all()
-					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
-						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						buff = await hexa.downloadMediaMessage(encmedia)
-						for (let _ of anu) {
-							hexa.sendMessage(_.jid, buff, image, {caption: `[ Viracanz Broadcast ]\n\n${body.slice(4)}`})
-						}
-						fakestatus('Suksess broadcast')
-					} else {
-						for (let _ of anu) {
-							sendMess(_.jid, `[ Viracanz Broadcast ]\n\n${body.slice(4)}`)
-						}
-						fakestatus('Suksess broadcast')
-					}
 					break
                     case 'base64':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} viracanz`)
@@ -443,17 +427,6 @@ break
                     get_result = await fetchJson(`https://api.xteam.xyz/encrypt/b64enc?text=${txt_enc}&APIKEY=06ce175b1a7d7317`)
                     fakestatus(get_result.result)
                     break
-                    case 'asupaan':
-            fakestatus(mess.wait)
-           sendMediaURL(from,`https://api.dapuhy.xyz/api/asupan/asupan?apikey=jteYUyARKd`, `Jangan Comli Kak ${pushname}`)
-           break
-            case 'public':
-          	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
-          	if (banChats === false) return
-          	// var taged = ben.message.extendedTextMessage.contextInfo.mentionedJid[0]
-          	banChats = false
-          	fakestatus(`*Sucesss Mode Public*`)
-          	break
 	     case 'ping':
 			const timestamp = speed();
 			const latensi = speed() - timestamp
