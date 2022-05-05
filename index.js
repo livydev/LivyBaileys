@@ -58,7 +58,7 @@ offline = false
 publik = true
 targetpc = '6289515233398'
 owner = '6289515233398'
-fake = 'Saya jelek dan saya bangga:)'
+fake = 'Saya jlelkk tapi jelekan kamuu'
 numbernye = '0'
 waktu = '-'
 alasan = '-'
@@ -133,6 +133,29 @@ module.exports = hexa = async (hexa, mek) => {
         const mentions = (teks, memberr, id) => {
             (id == null || id == undefined || id == false) ? hexa.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : hexa.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": memberr } })
         }
+      
+var ftok = {
+key: {
+fromMe: false,
+participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "16505434800@s.whatsapp.net" } : {})
+},
+message: {
+"productMessage": {
+"product": {
+"productImage":{
+"mimetype": "image/jpeg",
+"jpegThumbnail": fs.readFileSync('./stik/ppfake.jpeg'),
+"title": `Saya jlelkk tapi jelekan kamuu`, //Kasih namalu 
+"description": `Yang baca jlkk`, 
+"currencyCode": "Rp",
+"priceAmount1000": "1.00",
+"retailerId": `Hai Kak,Sayonara ${pushname}`,
+"productImageCount": 1
+},
+"businessOwnerJid": `0@s.whatsapp.net`
+}
+}
+}
 
         const fakestatus = (teks) => {
             hexa.sendMessage(from, teks, text, {
@@ -301,9 +324,10 @@ module.exports = hexa = async (hexa, mek) => {
         if (!mek.key.fromMe && banChats === true) return
 switch (command) {
     case 'listmenu':
-  
+ sound = fs.readFileSync('cmdpack/Whatsapp/audiovn/anyavn.mp3')
+hexa.sendMessage(from, sound, MessageType.audio, {quoted: fakestatus, mimetype: 'audio/mp4', ptt:true})
 var menu = `_Hai Sayonara,${pushname}👋_
-*List Menu Bot Hosting Viracanz🐹*
+*List Menu Bot Hosting Viracanz ✨*
 
 *1.termintedefault*
 *2.addpackage*
@@ -314,31 +338,29 @@ var menu = `_Hai Sayonara,${pushname}👋_
 *7.cekserver*
 *8.idff*
 *9.crateaccount*
-
-_Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
 `
         	fakestatus(menu)
         	break
     case "domain":
-    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    return fakestatus('*Error,Mode Private Active!*')
     break
     case "addpackage":
-    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    return fakestatus('*Error,Mode Private Active!*')
     break
     case "termintedefault":
-    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    return fakestatus('*Error,Mode Private Active!*')
     break
     case "cekdefault":
-    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    return fakestatus('*Error,Mode Private Active!*')
     break
     case "cekserver":
-    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    return fakestatus('*Error,Mode Private Active!*')
     break
     case "ceksmtp":
-    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    return fakestatus('*Error,Mode Private Active!*')
     break
     case "crateaccount":
-    return fakestatus('*Mode Private Aktif! ID Group Not Detect*')
+    return fakestatus('*Error,Mode Private Active!*')
     break
     case 'hentai':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
@@ -354,15 +376,25 @@ _Notes: Jika Ingin Sewa/Beli Chat Onwer Bot_
 const listdomainku = 
 `*List Domain NusaServerHosting Bot*
 
-*1.ffeventkulgar.com ✅*
-*2.chipsjagoid.com ✅*
+*1.ffeventkulgar.com ❌*
+*2.chipsjagoid.com ❌*
 *3.eventmlid22.com ✅*
 *4.hdichipsnew22.xyz ✅*
 *5.eventnew88.my.id ❌*
 *6.pubgnewevent22.com ✅*
 *7.cratenew22.com ❌*
+*8.kulgarff.xyz ✅*
+*9.gruphotnew1.com ✅*
+*10.chathot14.my.id ✅*
+*11.pubg22.org ❌*
+*12.eventml1.net ✅*
+*13.mlbbevents2.org ✅*
+*14.grupnews22.net ✅*
+*15.terbaru.org ❌*
+*16.pubggg.my.id ❌*
+*17.chipfree22.org ❌*
 `
-fakestatus(listdomainku)
+ftok(listdomainku)
 break
                     case 'idff':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} 570098876`)
@@ -371,42 +403,8 @@ break
                     get_result = get_result.result
                     ini_txt = `Nickname : ${get_result.nickname}\n`
                     ini_txt += `Status : ${get_result.code}\n`
-                    fakestatus(ini_txt)
-                    break
-                    case 'clearchat':
-					anu = await hexa.chats.all()
-					hexa.setMaxListeners(10)
-					for (let _ of anu) {
-				   hexa.clearMessage(_.jid)
-					}
-					fakegroup('Suksess')
-					break
-					case 'mediafire':
-
-if (args.length < 1) return fakestatus('Link Nya Mana? ')
-if(!isUrl(args[0]) && !args[0].includes('mediafire')) return reply(mess.error.api)
-if (Number(filesize) >= 30000) return fakestatus(`*「 MEDIAFIRE DOWNLOAD 」*
-
-*➤  Nama :* ${res[0].nama}*
-*➤  Ukuran :* ${res[0].size}*
-*➤  Link :* ${res[0].link}*
-
-_Maaf size melebihi batas maksimal, Silahkan klik link diatas_`)
-
-teks = args.join(' ')
-res = await mediafireDl(teks)
-result = `*「 MEDIAFIRE DOWNLOAD 」*
-
-*Data Berhasil Didapatkan!*
-*➤  Nama : ${res[0].nama}*
-*➤  Ukuran : ${res[0].size}*
-*➤  Link : ${res[0].link}*
-
-_File sedang dikirim, Silahkan tunggu beberapa menit_`
-fakestatus(result)
-res = await mediafireDl(teks)
-sendFileFromUrl(res[0].link, document, {mimetype: res[0].mime, filename: res[0].nama, quoted: mek})
-break
+                    ftok(ini_txt)
+                    break         
                     case 'isgd':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} https://delnichi.xyz`)
                     ini_url = args[0]
@@ -414,7 +412,7 @@ break
                     fakestatus(get_result.result)
                     break
                     case 'ssweb':
-					if (args.length < 1) return fakestatus('Url Nya mana Mastah?')
+					if (args.length < 1) return fakestatus('_Error,Invild Link:(_')
 					teks = body.slice(7)
 					fakestatus(mess.wait)
 					anu = await fetchJson(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`)
@@ -427,7 +425,8 @@ break
                     get_result = await fetchJson(`https://api.xteam.xyz/encrypt/b64enc?text=${txt_enc}&APIKEY=06ce175b1a7d7317`)
                     fakestatus(get_result.result)
                     break
-	     case 'ping':
+	        case 'ping':
+	        case 'status':
 			const timestamp = speed();
 			const latensi = speed() - timestamp
 			exec(`neofetch --stdout`, (error, stdout, stderr) => {
@@ -450,12 +449,12 @@ reply(e)
 	}
 if (isGroup && budy != undefined) {
 	} else {
-	console.log(color('[TEXT]', 'red'), 'Viraa-BOT', color(sender.split('@')[0]))
+	console.log(color('[LOLI]', 'yellow'), 'Loli', color(sender.split('@')[0]))
 	}		
 	} catch (e) {
     e = String(e)
     if (!e.includes("this.isZero") && !e.includes("jid")) {
-	console.log('Message : %s', color(e, 'green'))
+	console.log('Message : %s', color(e, 'white'))
         }
 	// console.log(e)
 	}
