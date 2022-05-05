@@ -133,7 +133,7 @@ module.exports = hexa = async (hexa, mek) => {
         const mentions = (teks, memberr, id) => {
             (id == null || id == undefined || id == false) ? hexa.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : hexa.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": memberr } })
         }
-         const troli =  {key: { fromMe: false,remoteJid: "status@broadcast", participant: '0@s.whatsapp.net'}, message: {orderMessage: {itemCount: 2022, status: 200, thumbnail: fs.readFileSync('./stik/ppfake.jpeg'),surface: 200, message: `Saya jlelkk tapi jelekan kamuu`, orderTitle: 'LivyBOTZ', sellerJid: '0@s.whatsapp.net'} } }
+         const troli =  {key: { fromMe: false,remoteJid: "status@broadcast", participant: '0@s.whatsapp.net'}, message: {orderMessage: {itemCount: 2022, status: 200, thumbnail: fs.readFileSync('./stik/ppfake.jpeg'),surface: 200, message: `Saya jlelkk tapi jelekan kamuu`, orderTitle: 'Vy', sellerJid: '0@s.whatsapp.net'} } }
          
         const fakestatus = (teks) => {
             hexa.sendMessage(from, teks, text, {
@@ -302,8 +302,6 @@ module.exports = hexa = async (hexa, mek) => {
         if (!mek.key.fromMe && banChats === true) return
 switch (command) {
     case 'listmenu':
- sound = fs.readFileSync('cmdpack/Whatsapp/audiovn/anyavn.mp3')
-hexa.sendMessage(from, sound, MessageType.audio, {quoted: fakestatus, mimetype: 'audio/mp4', ptt:true})
 var menu = `_Hai Sayonara,${pushname}👋_
 *List Menu Bot Hosting Viracanz ✨*
 
@@ -342,12 +340,12 @@ var menu = `_Hai Sayonara,${pushname}👋_
     break
     case 'hentai':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
-    hexa.sendMessage(from, gambar, image, { quoted: fakestatus,mek })
+    hexa.sendMessage(from, gambar, image, { quoted: troli,mek })
     }) 
     break
    case 'ass':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/ass?apikey=apiviradev`).then((gambar) => {
-     hexa.sendMessage(from, gambar, image, { quoted:troli, mek })
+     hexa.sendMessage(from, gambar, image, { quoted: troli,mek })
        })
        break
        case 'listdomain':
@@ -372,20 +370,27 @@ const listdomainku =
 *16.pubggg.my.id ❌*
 *17.chipfree22.org ❌*
 `
-troli(listdomainku)
+fakegroup(listdomainku)
 break
                     case 'idff':
-                    if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} 570098876`)
+                    if (args.length == 0) return troli(` Use Example: ${prefix + command} 570098876`)
                     ff_id = args[0]
                     get_result = await fetchJson(`https://delvanesia.xyz/ff/?id=${ff_id}&apikey=NbillaLoli`)
                     get_result = get_result.result
                     ini_txt = `Nickname : ${get_result.nickname}\n`
                     ini_txt += `Status : ${get_result.code}\n`
-                    troli(ini_txt)
+                    fakegroup(ini_txt)
                     break         
+                case 'public':
+          	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
+          	if (banChats === false) return
+          	// var taged = ben.message.extendedTextMessage.contextInfo.mentionedJid[0]
+          	banChats = false
+          	troli(`*Sucesss Activate Public*`)
+          	break
                     case 'asupan':
                   ini = await fetchJson(`https://zeroyt7-api.herokuapp.com/api/asupan/santuy?apikey=ZeroYT7`)
-                  fakestatus(mess.wait)
+                  troli(mess.wait)
                  buffer = await getBuffer(ini.result.url)
                   hexa.sendMessage(from, buffer, video, {quoted: troli, caption: 'Nih Jngan Comli Y Deck'})
                    break
@@ -393,7 +398,7 @@ break
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} https://delnichi.xyz`)
                     ini_url = args[0]
                     get_result = await fetchJson(`https://api.dapuhy.xyz/api/others/isgd?url=${ini_url}&apikey=jteYUyARKd`)
-                    fakestatus(get_result.result)
+                    troli(get_result.result)
                     break
                     case 'ssweb':
 					if (args.length < 1) return fakestatus('_Error,Invild Link:(_')
@@ -401,9 +406,8 @@ break
 					fakestatus(mess.wait)
 					anu = await fetchJson(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`)
 					buff = await getBuffer(anu.gambar)
-					hexa.sendMessage(from, buff, image, {quoted: mek})
+					hexa.sendMessage(from, buff, image, {quoted: troli,mek})
 					break
-					
                     case 'base64':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} viracanz`)
                     txt_enc = args[0]
