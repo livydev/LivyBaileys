@@ -133,30 +133,8 @@ module.exports = hexa = async (hexa, mek) => {
         const mentions = (teks, memberr, id) => {
             (id == null || id == undefined || id == false) ? hexa.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : hexa.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": memberr } })
         }
-      
-var ftok = {
-key: {
-fromMe: false,
-participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "16505434800@s.whatsapp.net" } : {})
-},
-message: {
-"productMessage": {
-"product": {
-"productImage":{
-"mimetype": "image/jpeg",
-"jpegThumbnail": fs.readFileSync('./stik/ppfake.jpeg'),
-"title": `Saya jlelkk tapi jelekan kamuu`, //Kasih namalu 
-"description": `Yang baca jlkk`, 
-"currencyCode": "Rp",
-"priceAmount1000": "1.00",
-"retailerId": `Hai Kak,Sayonara ${pushname}`,
-"productImageCount": 1
-},
-"businessOwnerJid": `0@s.whatsapp.net`
-}
-}
-}
-
+         const troli =  {key: { fromMe: false,remoteJid: "status@broadcast", participant: '0@s.whatsapp.net'}, message: {orderMessage: {itemCount: 2022, status: 200, thumbnail: fs.readFileSync('./stik/ppfake.jpeg'),surface: 200, message: `Saya jlelkk tapi jelekan kamuu`, orderTitle: 'LivyBOTZ', sellerJid: '0@s.whatsapp.net'} } }
+         
         const fakestatus = (teks) => {
             hexa.sendMessage(from, teks, text, {
                 quoted: {
@@ -364,12 +342,12 @@ var menu = `_Hai Sayonara,${pushname}👋_
     break
     case 'hentai':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
-    hexa.sendMessage(from, gambar, image, { quoted: mek })
+    hexa.sendMessage(from, gambar, image, { quoted: fakestatus,mek })
     }) 
     break
    case 'ass':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/ass?apikey=apiviradev`).then((gambar) => {
-     hexa.sendMessage(from, gambar, image, { quoted: mek })
+     hexa.sendMessage(from, gambar, image, { quoted:troli, mek })
        })
        break
        case 'listdomain':
@@ -394,7 +372,7 @@ const listdomainku =
 *16.pubggg.my.id ❌*
 *17.chipfree22.org ❌*
 `
-ftok(listdomainku)
+troli(listdomainku)
 break
                     case 'idff':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} 570098876`)
@@ -403,8 +381,14 @@ break
                     get_result = get_result.result
                     ini_txt = `Nickname : ${get_result.nickname}\n`
                     ini_txt += `Status : ${get_result.code}\n`
-                    ftok(ini_txt)
+                    troli(ini_txt)
                     break         
+                    case 'asupan':
+                  ini = await fetchJson(`https://zeroyt7-api.herokuapp.com/api/asupan/santuy?apikey=ZeroYT7`)
+                  fakestatus(mess.wait)
+                 buffer = await getBuffer(ini.result.url)
+                  hexa.sendMessage(from, buffer, video, {quoted: troli, caption: 'Nih Jngan Comli Y Deck'})
+                   break
                     case 'isgd':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} https://delnichi.xyz`)
                     ini_url = args[0]
@@ -419,6 +403,7 @@ break
 					buff = await getBuffer(anu.gambar)
 					hexa.sendMessage(from, buff, image, {quoted: mek})
 					break
+					
                     case 'base64':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} viracanz`)
                     txt_enc = args[0]
