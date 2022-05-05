@@ -303,7 +303,7 @@ module.exports = hexa = async (hexa, mek) => {
 switch (command) {
     case 'listmenu':
 var menu = `_Hai Sayonara,${pushname}👋_
-*List Menu Bot Hosting Viracanz ✨*
+*List Menu Bot Hosting Viracanz 🐱*
 
 *1.termintedefault*
 *2.addpackage*
@@ -340,12 +340,12 @@ var menu = `_Hai Sayonara,${pushname}👋_
     break
     case 'hentai':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
-    hexa.sendMessage(from, gambar, image, { quoted: troli,mek })
+    hexa.sendMessage(from, gambar, image, { quoted: fakestatus,mek })
     }) 
     break
    case 'ass':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/ass?apikey=apiviradev`).then((gambar) => {
-     hexa.sendMessage(from, gambar, image, { quoted: troli,mek })
+     hexa.sendMessage(from, gambar, image, { quoted: fakestatus,mek })
        })
        break
        case 'listdomain':
@@ -370,35 +370,35 @@ const listdomainku =
 *16.pubggg.my.id ❌*
 *17.chipfree22.org ❌*
 `
-fakegroup(listdomainku)
+fakestatus(listdomainku)
 break
                     case 'idff':
-                    if (args.length == 0) return troli(` Use Example: ${prefix + command} 570098876`)
+                    if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} 570098876`)
                     ff_id = args[0]
                     get_result = await fetchJson(`https://delvanesia.xyz/ff/?id=${ff_id}&apikey=NbillaLoli`)
                     get_result = get_result.result
                     ini_txt = `Nickname : ${get_result.nickname}\n`
                     ini_txt += `Status : ${get_result.code}\n`
-                    fakegroup(ini_txt)
+                    fakestatus(ini_txt)
                     break         
                 case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
           	if (banChats === false) return
           	// var taged = ben.message.extendedTextMessage.contextInfo.mentionedJid[0]
           	banChats = false
-          	troli(`*Sucesss Activate Public*`)
+          	fakestatus(`*Sucesss Activate Public*`)
           	break
                     case 'asupan':
                   ini = await fetchJson(`https://zeroyt7-api.herokuapp.com/api/asupan/santuy?apikey=ZeroYT7`)
-                  troli(mess.wait)
+                  fakestatus(mess.wait)
                  buffer = await getBuffer(ini.result.url)
-                  hexa.sendMessage(from, buffer, video, {quoted: troli, caption: 'Nih Jngan Comli Y Deck'})
+                  hexa.sendMessage(from, buffer, video, {quoted: fakestatus, caption: 'Nih Jngan Comli Y Deck'})
                    break
                     case 'isgd':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} https://delnichi.xyz`)
                     ini_url = args[0]
                     get_result = await fetchJson(`https://api.dapuhy.xyz/api/others/isgd?url=${ini_url}&apikey=jteYUyARKd`)
-                    troli(get_result.result)
+                    fakestatus(get_result.result)
                     break
                     case 'ssweb':
 					if (args.length < 1) return fakestatus('_Error,Invild Link:(_')
@@ -406,7 +406,7 @@ break
 					fakestatus(mess.wait)
 					anu = await fetchJson(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`)
 					buff = await getBuffer(anu.gambar)
-					hexa.sendMessage(from, buff, image, {quoted: troli,mek})
+					hexa.sendMessage(from, buff, image, {quoted: fakestatus,mek})
 					break
                     case 'base64':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} viracanz`)
