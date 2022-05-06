@@ -117,13 +117,6 @@ chatss.map( async ({ jid }) => {
 if (readPc === false) return
 await hexa.chatRead(jid)
 })
-if (autovn) {
-	if (autovn === false) return
-await hexa.updatePresence(from, Presence.recording)
-} else if (autoketik) {
-	if (autoketik === false) return
-await hexa.updatePresence(from, Presence.composing)
-}
 
         //MESS
 		mess = {
