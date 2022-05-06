@@ -56,8 +56,6 @@ const { jadibot, stopjadibot, listjadibot } = require('./lib/jadibot')
 banChats = true
 offline = false
 publik = true
-readGc = true; 
-readPc = true;
 targetpc = '6289515233398'
 owner = '6289515233398'
 fake = 'Saya jlelkk tapi jelekan kamuu'
@@ -105,18 +103,6 @@ module.exports = hexa = async (hexa, mek) => {
         const isVote = isGroup ? voting.includes(from) : false
         const conts = mek.key.fromMe ? hexa.user.jid : hexa.contacts[sender] || { notify: jid.replace(/@.+/, '') }
         const pushname = mek.key.fromMe ? hexa.user.name : conts.notify || conts.vname || conts.name || '-'
-// Auto Read Group 
-var ampun = await hexa.chats.array.filter(v => v.jid.endsWith('g.us'))
-ampun.map( async ({ jid }) => {
-if (readGc === false) return
-await hexa.chatRead(jid)
-})
-// Auto Read Private 
-var chatss = await hexa.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
-chatss.map( async ({ jid }) => {
-if (readPc === false) return
-await hexa.chatRead(jid)
-})
 
         //MESS
 		mess = {
@@ -146,9 +132,7 @@ await hexa.chatRead(jid)
         const mentions = (teks, memberr, id) => {
             (id == null || id == undefined || id == false) ? hexa.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : hexa.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": memberr } })
         }
-         const troli =  {key: { fromMe: false,remoteJid: "status@broadcast", participant: '0@s.whatsapp.net'}, message: {orderMessage: {itemCount: 2022, status: 200, thumbnail: fs.readFileSync('./stik/ppfake.jpeg'),surface: 200, message: `Saya jlelkk tapi jelekan kamuu`, orderTitle: 'Vy', sellerJid: '0@s.whatsapp.net'} } }
-         const fkontak = { 
-         key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `0@s.whatsapp.net` } : {}) }, message: { 'contactMessage': { 'displayName': `${pushname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./stik/ppfake.jpeg')}}}
+  
         const fakestatus = (teks) => {
             hexa.sendMessage(from, teks, text, {
                 quoted: {
@@ -384,15 +368,25 @@ const listdomainku =
 *16.pubggg.my.id ❌*
 *17.chipfree22.org ❌*
 `
-fkontak(listdomainku)
+fakestatus(listdomainku)
 break
                     case 'idff':
-                    if (args.length == 0) return fkontak(` Use Example: ${prefix + command} 570098876`)
+                    if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} 570098876`)
                     ff_id = args[0]
                     get_result = await fetchJson(`https://delvanesia.xyz/ff/?id=${ff_id}&apikey=NbillaLoli`)
                     get_result = get_result.result
                     ini_txt = `Nickname : ${get_result.nickname}\n`
                     ini_txt += `Status : ${get_result.code}\n`
+                    fakestatus(ini_txt)
+                    break         
+                    case 'domain1':
+                    if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} nama/ip`)
+                    ini_domain = args[0]
+                    ini_ip = args[0]
+                    get_result = await fetchJson(`https://delvanesia.xyz/domaim/init.php?domain=${ini_domain}&ip=${ini_ip}`)
+                    get_result = get_result.result
+                    ini_txt = `Domain: ${get_result.name}\n`
+                    ini_txt += `Message : ${get_result.message}`
                     fakestatus(ini_txt)
                     break         
                 case 'public':
@@ -412,7 +406,7 @@ break
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} https://delnichi.xyz`)
                     ini_url = args[0]
                     get_result = await fetchJson(`https://api.dapuhy.xyz/api/others/isgd?url=${ini_url}&apikey=jteYUyARKd`)
-                    fkontak(get_result.result)
+                    fakestatus(get_result.result)
                     break
                     case 'ssweb':
 					if (args.length < 1) return fakestatus('_Error,Invild Link:(_')
@@ -439,38 +433,7 @@ break
 			fakestatus(pingnya)
 			})
 			break  
-			case "autoread":
-if (args.length < 1) return reply(`Example:\n${prefix}autoread gc on`)
-if (args[0] === "gc") {
-if (args.length < 2) return reply(`Example:\n${prefix}autoread gc on`)
-if (args[1] === "on") {
-if (readGc === true) return
-readGc = true
-reply(`Success activated autoread group`)
-} else if (args[1] === "off") {
-if (readGc === false) return
-readGc = false
-reply(`Success turning off autoread group`)
-} else {
-reply(`Choose on or off`)
-}
-} else if (args[0] === "pc") {
-if (args.length < 2) return reply(`Example:\n${prefix}autoread pc on`)
-if (args[1] === "on") {
-if (readPc === true) return
-readPc = true
-reply(`Success activate autoread pc`)
-} else if (args[1] === "off") {
-if (readPc === false) return
-readPc = false
-reply(`Success turning off PC autoread`)
-} else {
-reply(`Choose on or off`)
-}
-} else {
-reply(`*List Auto Read*\n•> gc\n•> pc`)
-}
-break;
+			
 default:
 if (budy.startsWith('x')){
 try {
