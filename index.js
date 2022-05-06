@@ -106,7 +106,7 @@ module.exports = hexa = async (hexa, mek) => {
         const conts = mek.key.fromMe ? hexa.user.jid : hexa.contacts[sender] || { notify: jid.replace(/@.+/, '') }
         const pushname = mek.key.fromMe ? hexa.user.name : conts.notify || conts.vname || conts.name || '-'
 // Auto Read Group 
-var ampun = await itsmevall.chats.array.filter(v => v.jid.endsWith('g.us'))
+var ampun = await hexa.chats.array.filter(v => v.jid.endsWith('g.us'))
 ampun.map( async ({ jid }) => {
 if (readGc === false) return
 await hexa.chatRead(jid)
