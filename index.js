@@ -315,7 +315,7 @@ var menu = `_Hai Sayonara,${pushname}👋_
 `
         	fakestatus(menu)
         	break
-    case "domain":
+    case "muktol":
     return fakestatus('*Error,Mode Private Active!*')
     break
     case "addpackage":
@@ -338,12 +338,12 @@ var menu = `_Hai Sayonara,${pushname}👋_
     break
     case 'hentai':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
-    hexa.sendMessage(from, gambar, image, { quoted: fakestatus,mek })
+    hexa.sendMessage(from, gambar, image, { quoted: mek })
     }) 
     break
    case 'ass':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/ass?apikey=apiviradev`).then((gambar) => {
-     hexa.sendMessage(from, gambar, image, { quoted: fakestatus,mek })
+     hexa.sendMessage(from, gambar, image, { quoted: mek })
        })
        break
        case 'listdomain':
@@ -376,17 +376,7 @@ break
                     get_result = await fetchJson(`https://delvanesia.xyz/ff/?id=${ff_id}&apikey=NbillaLoli`)
                     get_result = get_result.result
                     ini_txt = `Nickname : ${get_result.nickname}\n`
-                    ini_txt += `Status : ${get_result.code}\n`
-                    fakestatus(ini_txt)
-                    break         
-                    case 'domain1':
-                    if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} nama/ip`)
-                    ini_domain = args[0]
-                    ini_ip = args[0]
-                    get_result = await fetchJson(`https://delvanesia.xyz/domaim/init.php?domain=${ini_domain}&ip=${ini_ip}`)
-                    get_result = get_result.result
-                    ini_txt = `Domain: ${get_result.name}\n`
-                    ini_txt += `Message : ${get_result.message}`
+                    ini_txt += `Status : ${get_result.code}`
                     fakestatus(ini_txt)
                     break         
                 case 'public':
@@ -396,16 +386,16 @@ break
           	banChats = false
           	fakestatus(`*Sucesss Activate Public*`)
           	break
-                    case 'asupan':
-                  ini = await fetchJson(`https://zeroyt7-api.herokuapp.com/api/asupan/santuy?apikey=ZeroYT7`)
-                  fakestatus(mess.wait)
-                 buffer = await getBuffer(ini.result.url)
-                  hexa.sendMessage(from, buffer, video, {quoted: fakestatus, caption: 'Nih Jngan Comli Y Deck'})
-                   break
                     case 'isgd':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} https://delnichi.xyz`)
                     ini_url = args[0]
                     get_result = await fetchJson(`https://api.dapuhy.xyz/api/others/isgd?url=${ini_url}&apikey=jteYUyARKd`)
+                    fakestatus(get_result.result)
+                    break
+                    case 'domain':
+                    if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} eventff`)
+                    ini_dom = args[0]
+                    get_result = await fetchJson(`https://delvanesia.xyz/domaim/init.php?domain=${ini_dom}`)
                     fakestatus(get_result.result)
                     break
                     case 'ssweb':
@@ -414,7 +404,7 @@ break
 					fakestatus(mess.wait)
 					anu = await fetchJson(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`)
 					buff = await getBuffer(anu.gambar)
-					hexa.sendMessage(from, buff, image, {quoted: fakestatus,mek})
+					hexa.sendMessage(from, buff, image, {quoted: mek})
 					break
                     case 'base64':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} viracanz`)
