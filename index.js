@@ -191,9 +191,6 @@ module.exports = hexa = async (hexa, mek) => {
             })
         }
         const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `Deviraa Cntik`,jpegThumbnail: fs.readFileSync(`./stik/ppfake.jpeg`)}}}
-        const finv = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "6287895808192-1616169743@g.us","inviteCode": "m","groupName": "P", "caption": `Deviraa Cantig`, 'jpegThumbnail': fs.readFileSync(`./stik/ppfake.jpeg`)}}}
-        const floc = {key : {participant : '0@s.whatsapp.net'},message: {locationMessage: {name: `DeviraaNbl`,jpegThumbnail: fs.readFileSync(`DeviraaNbl`)}}}
-		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `6287895808192-1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `DeviraaHost`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;DeviraaNbl,;;;\nFN:DeviraaNbl,\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync(`./stik/ppfake.jpeg`), thumbnail: fs.readFileSync(`./stik/ppfake.jpeg`),sendEphemeral: true}}}
         const sendStickerFromUrl = async(to, url) => {
                 var names = Date.now() / 10000;
                 var download = function (uri, filename, callback) {
@@ -342,7 +339,7 @@ var menu = `_Hai Sayonara,${pushname}👋_
     break
     case 'hentai':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
-    hexa.sendMessage(from, gambar, image, { quoted: finv})
+    hexa.sendMessage(from, gambar, image, { quoted: fdoc})
     }) 
     break
     case 'asupan':
