@@ -190,22 +190,6 @@ module.exports = hexa = async (hexa, mek) => {
                 }
             })
         }
-      const fgclink = {
-	"key": {
-		"fromMe": false,
-		"participant": "0@s.whatsapp.net",
-		"remoteJid": "0@s.whatsapp.net"
-	},
-	"message": {
-		"groupInviteMessage": {
-			"groupJid": "120363023040944761@g.us",
-			"inviteCode": "W",
-			"groupName": "Deviraaa", 
-            "caption": "Deviraa Cantikk", 
-            'jpegThumbnail': fs.readFileSync('./stik/93278eaa12fd253a4fe3cc08a0b219bc.jpg')
-		}
-	}
-}
        //FAKEREPLY GIF
 const fakegifty = {
 	 key: { 
@@ -386,9 +370,24 @@ var menu = `_Hai Sayonara,${pushname}👋_
     hexa.sendMessage(from, gambar, image, { quoted: fakegifty})
     }) 
     break
-    case 'asupan':
+    case 'clearall':
+					fakestatus(mess.wait)
+					anu = await hexa.chats.all()
+					hexa.setMaxListeners(25)
+					for (let _ of anu) {
+						hexa.deleteChat(_.jid)
+					}
+					fakestatus(`\`\`\`Sukses delete all chat IRIENEBOT\`\`\``)
+					break
+            case 'asupan':
               fakestatus(mess.wait)
-              anu = await fetchJson(`https://api.lolhuman.xyz/api/asupan?apikey=3f56f3c5799ae89c6d0f9c96`)
+              anu = await fetchJson(`https://zeroyt7-api.herokuapp.com/api/asupan?apikey=ZeroYT7`)
+              buffer = await getBuffer(anu.result)
+              hexa.sendMessage(from, buffer, video, { quoted: fvn })
+              break
+              case 'bokep':
+              fakestatus(mess.wait)
+              anu = await fetchJson(`https://yog-apikey.herokuapp.com/api/bokep?apikey=YogGanz`)
               buffer = await getBuffer(anu.result)
               hexa.sendMessage(from, buffer, video, { quoted: fvn })
               break
@@ -422,7 +421,17 @@ break
                     get_result = get_result.result
                     ini_txt = `Nickname : ${get_result.nickname}\n`
                     ini_txt += `Status : ${get_result.code}`
-                    fgclink(ini_txt)
+                    fakestatus(ini_txt)
+                    break         
+                    case 'randsex':
+                    fakestatus(mess.wait)
+                    get_result = await fetchJson(`https://api-xcoders.xyz/api/random/bokep?apikey=tl9rFy0DLv`)
+                    get_result = get_result.result
+                    ini_txt = `Title : ${get_result.title}\n`
+                    ini_txt = `Thumb : ${get_result.thumb}\n`
+                    ini_txt = `Views : ${get_result.views}\n`
+                    ini_txt += `Link : ${get_result.url}`
+                    fakestatus(ini_txt)
                     break         
                 case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
@@ -435,7 +444,7 @@ break
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} https://delnichi.xyz`)
                     ini_url = args[0]
                     get_result = await fetchJson(`https://api.dapuhy.xyz/api/others/isgd?url=${ini_url}&apikey=jteYUyARKd`)
-                    fgclink(get_result.result)
+                    fakestatus(get_result.result)
                     break
                     case 'domain':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} eventff`)
@@ -449,7 +458,7 @@ break
 					fakestatus(mess.wait)
 					anu = await fetchJson(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`)
 					buff = await getBuffer(anu.gambar)
-					hexa.sendMessage(from, buff, image, {quoted: fgclink})
+					hexa.sendMessage(from, buff, image, {quoted: fvn})
 					break
                     case 'base64':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} viracanz`)
