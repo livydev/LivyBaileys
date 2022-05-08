@@ -210,9 +210,8 @@ module.exports = hexa = async (hexa, mek) => {
 const fakegifty = {
 	 key: { 
           fromMe: false,
-	      participant: `0@s.whatsapp.net`, ...(m.chat ? 
-	 { remoteJid: "120363023040944761@g.us" } : {}) 
-                },
+	      participant: `0@s.whatsapp.net`, ...(from ?  { remoteJid: "status@broadcast" } : {}) 
+    },
 	 message: { 
                  "videoMessage": { 
                  "title":"Deviraa Cantikk",
@@ -227,8 +226,8 @@ const fakegifty = {
   const fvn = {
 	 key: { 
           fromMe: false,
-	      participant: `0@s.whatsapp.net`, ...(m.chat ? 
-	 { remoteJid: "120363023040944761@g.us" } : {}) 
+	      participant: `0@s.whatsapp.net`, ...(from ? 
+	 { remoteJid: "status@broadcast" } : {}) 
                 },
 	 message: { 
 		"audioMessage": {
