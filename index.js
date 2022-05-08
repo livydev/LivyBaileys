@@ -153,7 +153,7 @@ module.exports = hexa = async (hexa, mek) => {
                             "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=",
                             "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69",
                             "mediaKeyTimestamp": "1610993486",
-                            "jpegThumbnail": fs.readFileSync('./stik/ppfake.jpeg'),
+                            "jpegThumbnail": fs.readFileSync('./stik/93278eaa12fd253a4fe3cc08a0b219bc.jpg'),
                             "scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="
                         }
                     }
@@ -168,7 +168,7 @@ module.exports = hexa = async (hexa, mek) => {
                 quoted: {
                     key: {
                         fromMe: false,
-                        participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "6289523258649-1604595598@g.us" } : {})
+                        participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "120363023040944761@g.us" } : {})
                     },
                     message: {
                         "imageMessage": {
@@ -190,7 +190,55 @@ module.exports = hexa = async (hexa, mek) => {
                 }
             })
         }
-        const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `Deviraa Cntik`,jpegThumbnail: fs.readFileSync(`./stik/ppfake.jpeg`)}}}
+      const fgclink = {
+	"key": {
+		"fromMe": false,
+		"participant": "0@s.whatsapp.net",
+		"remoteJid": "0@s.whatsapp.net"
+	},
+	"message": {
+		"groupInviteMessage": {
+			"groupJid": "120363023040944761@g.us",
+			"inviteCode": "W",
+			"groupName": "Deviraaa", 
+            "caption": "Deviraa Cantikk", 
+            'jpegThumbnail': fs.readFileSync('./stik/93278eaa12fd253a4fe3cc08a0b219bc.jpg')
+		}
+	}
+}
+       //FAKEREPLY GIF
+const fakegifty = {
+	 key: { 
+          fromMe: false,
+	      participant: `0@s.whatsapp.net`, ...(m.chat ? 
+	 { remoteJid: "120363023040944761@g.us" } : {}) 
+                },
+	 message: { 
+                 "videoMessage": { 
+                 "title":"Deviraa Cantikk",
+                 "h": `y`,
+                 'seconds': '99999', 
+                 'gifPlayback': 'true', 
+                 'caption': 'Deviraa Bot',
+                 'jpegThumbnail': fs.readFileSync('./stik/93278eaa12fd253a4fe3cc08a0b219bc.jpg')
+                        }
+                       }
+	                  } 
+  const fvn = {
+	 key: { 
+          fromMe: false,
+	      participant: `0@s.whatsapp.net`, ...(m.chat ? 
+	 { remoteJid: "120363023040944761@g.us" } : {}) 
+                },
+	 message: { 
+		"audioMessage": {
+                 "mimetype":"audio/ogg; codecs=opus",
+                 "seconds": "99999",
+                 "ptt": "true"
+                        }
+	                  } 
+                     }
+        const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `Deviraa`,jpegThumbnail: fs.readFileSync(`./stik/ppfake.jpeg`)}}}
         const sendStickerFromUrl = async(to, url) => {
                 var names = Date.now() / 10000;
                 var download = function (uri, filename, callback) {
@@ -316,9 +364,6 @@ var menu = `_Hai Sayonara,${pushname}👋_
 `
         	fakestatus(menu)
         	break
-    case "muktol":
-    return fakestatus('*Error,Mode Private Active!*')
-    break
     case "addpackage":
     return fakestatus('*Error,Mode Private Active!*')
     break
@@ -339,18 +384,18 @@ var menu = `_Hai Sayonara,${pushname}👋_
     break
     case 'hentai':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/hentai?apikey=apiviradev`).then((gambar) => {
-    hexa.sendMessage(from, gambar, image, { quoted: fdoc})
+    hexa.sendMessage(from, gambar, image, { quoted: fakegifty})
     }) 
     break
     case 'asupan':
               fakestatus(mess.wait)
               anu = await fetchJson(`https://api.lolhuman.xyz/api/asupan?apikey=3f56f3c5799ae89c6d0f9c96`)
               buffer = await getBuffer(anu.result)
-              hexa.sendMessage(from, buffer, video, { quoted: fdoc })
+              hexa.sendMessage(from, buffer, video, { quoted: fvn })
               break
    case 'ass':
     getBuffer(`https://viraadwifdlh.herokuapp.com/api/nsfw/ass?apikey=apiviradev`).then((gambar) => {
-     hexa.sendMessage(from, gambar, image, { quoted: fdoc})
+     hexa.sendMessage(from, gambar, image, { quoted: fakegifty})
        })
        break
        case 'listdomain':
@@ -368,12 +413,6 @@ const listdomainku =
 *9.gruphotnew1.com ✅*
 *10.chathot14.my.id ✅*
 *11.pubg22.org ❌*
-*12.eventml1.net ✅*
-*13.mlbbevents2.org ✅*
-*14.grupnews22.net ✅*
-*15.terbaru.org ❌*
-*16.pubggg.my.id ❌*
-*17.chipfree22.org ❌*
 `
 fakestatus(listdomainku)
 break
@@ -384,7 +423,7 @@ break
                     get_result = get_result.result
                     ini_txt = `Nickname : ${get_result.nickname}\n`
                     ini_txt += `Status : ${get_result.code}`
-                    fakestatus(ini_txt)
+                    fgclink(ini_txt)
                     break         
                 case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
@@ -397,7 +436,7 @@ break
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} https://delnichi.xyz`)
                     ini_url = args[0]
                     get_result = await fetchJson(`https://api.dapuhy.xyz/api/others/isgd?url=${ini_url}&apikey=jteYUyARKd`)
-                    fakestatus(get_result.result)
+                    fgclink(get_result.result)
                     break
                     case 'domain':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} eventff`)
@@ -411,7 +450,7 @@ break
 					fakestatus(mess.wait)
 					anu = await fetchJson(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`)
 					buff = await getBuffer(anu.gambar)
-					hexa.sendMessage(from, buff, image, {quoted: finv})
+					hexa.sendMessage(from, buff, image, {quoted: fgclink})
 					break
                     case 'base64':
                     if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} viracanz`)
