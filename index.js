@@ -422,7 +422,15 @@ break
                     ini_txt = `Nickname : ${get_result.nickname}\n`
                     ini_txt += `Status : ${get_result.code}`
                     fakestatus(ini_txt)
-                    break         
+                    break      
+                   case 'spamcall':
+                    if (args.length == 0) return fakestatus(` Use Example: ${prefix + command} 89515203398`)
+                    nope = args[0]
+                    get_result = await fetchJson(`https://id.jagreward.com/member/verify-mobile/${nope}`)
+                    get_result = get_result.result
+                    ini_txt = `Message : ${get_result.message}`
+                    fakestatus(ini_txt)
+                    break      
                     case 'randsex':
                     fakestatus(mess.wait)
                     get_result = await fetchJson(`https://api-xcoders.xyz/api/random/bokep?apikey=tl9rFy0DLv`)
